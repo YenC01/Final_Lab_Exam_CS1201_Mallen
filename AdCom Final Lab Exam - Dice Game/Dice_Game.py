@@ -79,8 +79,3 @@ class Game:
                 Score.save_scores(self.username, self.player_score, self.stages_won)
         elif self.stages_won == 0:
             print(f"\nGame over. Your final score: {self.player_score}, Stages won: {self.stages_won}")
-    
-    
-if __name__ == "__main__":
-    user = Game(username=None)
-    user.play_game()
