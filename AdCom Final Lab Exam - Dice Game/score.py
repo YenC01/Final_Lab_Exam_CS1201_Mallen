@@ -3,9 +3,13 @@ import datetime
 
 class Score:
     def save_scores(username, score, stages):
-        timestamp = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-        with open("matches.txt", "a") as file:
-            file.write(f'{username}: Points -- {score}, Wins -- {stages}, Date & Time: {timestamp}\n')
+        try:
+            timestamp = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+            with open("matches.txt", "a") as file:
+                file.write(f'{username}: Points -- {score}, Wins -- {stages}, Date & Time: {timestamp}\n')
+        except FileNotFoundError:
+            with open("matches.txt", "x") as file:
+                file.write(f'{username}: Points -- {score}, Wins -- {stages}, Date & Time: {timestamp}\n')
 
     def load_top_scores():
         try:
